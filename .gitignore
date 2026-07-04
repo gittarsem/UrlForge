@@ -1,0 +1,33 @@
+# =========================
+# Java / Spring Boot
+# =========================
+**/target/
+**/.idea/
+**/*.iml
+
+# Spring
+**/application-local.properties
+
+# Environment
+**/.env
+**/.env.local
+
+# Logs
+**/*.log
+logs/
+
+# =========================
+# React
+# =========================
+**/node_modules/
+**/dist/
+
+# =========================
+# macOS
+# =========================
+.DS_Store
+
+# =========================
+# VS Code
+# =========================
+.vscode/
