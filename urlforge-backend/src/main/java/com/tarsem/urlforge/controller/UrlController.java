@@ -3,6 +3,7 @@ package com.tarsem.urlforge.controller;
 import com.tarsem.urlforge.dto.UrlRequest;
 import com.tarsem.urlforge.dto.UrlResponse;
 import com.tarsem.urlforge.service.interfaces.UrlService;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,7 +19,7 @@ public class UrlController {
     private UrlService urlService;
 
     @PostMapping("/urls")
-    private ResponseEntity<UrlResponse> urlforge(@RequestBody UrlRequest url){
+    private ResponseEntity<UrlResponse> urlforge(@Valid @RequestBody UrlRequest url){
         return ResponseEntity.ok(urlService.forge(url));
     }
 }

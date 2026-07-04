@@ -3,6 +3,7 @@ package com.tarsem.urlforge.service;
 import com.tarsem.urlforge.dto.UrlRequest;
 import com.tarsem.urlforge.dto.UrlResponse;
 import com.tarsem.urlforge.entity.UrlEntity;
+import com.tarsem.urlforge.exception.UrlNotFoundException;
 import com.tarsem.urlforge.repository.UrlRepository;
 import com.tarsem.urlforge.service.interfaces.UrlService;
 import com.tarsem.urlforge.util.Base62Encoder;
@@ -35,5 +36,16 @@ public class UrlServiceImpl implements UrlService {
 
         urlRepository.save(urlEntity);
         return new UrlResponse(url.getLongUrl(), baseUrl + shortCode);
+    }
+
+    @Override
+    public String redirect(String shortCode) throws UrlNotFoundException {
+       UrlEntity urlEntity=urlRepository.findByShortCode(shortCode)
+               .orElseThrow(
+                       ()-> new UrlNotFoundException("Url Not Found")
+               );
+       urlEntity.setClickCount(urlEntity.getClickCount()+1);
+       urlRepository.save(urlEntity);
+       return urlEntity.getOriginalUrl();
     }
 }
