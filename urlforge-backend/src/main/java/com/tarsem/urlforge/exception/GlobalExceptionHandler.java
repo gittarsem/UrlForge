@@ -1,5 +1,6 @@
 package com.tarsem.urlforge.exception;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -9,6 +10,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @RestControllerAdvice
+@Tag(name = "Global Exception Handler")
 public class GlobalExceptionHandler {
 
     @ExceptionHandler(MethodArgumentNotValidException.class)

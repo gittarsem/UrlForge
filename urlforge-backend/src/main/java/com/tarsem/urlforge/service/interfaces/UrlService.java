@@ -6,7 +6,7 @@ import com.tarsem.urlforge.exception.UrlNotFoundException;
 
 public interface UrlService {
 
-     UrlResponse forge(UrlRequest url);
+    UrlResponse forge(UrlRequest url);
 
     String redirect(String shortCode) throws UrlNotFoundException;
 }
