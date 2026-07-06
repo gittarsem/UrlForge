@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URLForge — Shorten, Validate, Track. One link at a time.</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ============ NAVBAR ============ -->
+    <header class="navbar">
+        <div class="nav-inner">
+            <div class="logo">
+                <span class="logo-mark">U</span>
+                URLForge
+            </div>
+            <nav class="nav-links">
+                <a href="#hero">Home</a>
+                <a href="#shorten">Shorten URL</a>
+                <a href="#validate">Validate URL</a>
+                <a href="#analytics">Analytics</a>
+                <a href="#faq">FAQ</a>
+            </nav>
+            <div class="nav-cta">
+                <a href="#shorten" class="btn btn-primary">Get Started</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- ============ HERO ============ -->
+    <section class="hero" id="hero">
+        <div class="container hero-grid">
+            <div class="hero-left">
+                <span class="eyebrow reveal"><span class="dot"></span>All-In-One URL Platform</span>
+                <h1 class="reveal reveal-1">
+                    <span class="ghost">Meet Your New</span>
+                    <span class="solid">URL Shortcut!</span>
+                </h1>
+                <p class="reveal reveal-2">Create short URLs, validate links before you open them, generate QR codes,
+                    and track detailed analytics — all from one beautiful platform.</p>
+                <div class="hero-ctas reveal reveal-3">
+                    <a href="#shorten" class="btn btn-primary">Shorten URL →</a>
+                    <a href="#analytics" class="btn btn-secondary">View Analytics</a>
+                </div>
+                <div class="hero-badges reveal reveal-3">
+                    <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="3">
+                            <path d="M20 6L9 17l-5-5" />
+                        </svg>Free Forever</span>
+                    <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="3">
+                            <path d="M20 6L9 17l-5-5" />
+                        </svg>Fast</span>
+                    <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="3">
+                            <path d="M20 6L9 17l-5-5" />
+                        </svg>Secure</span>
+                </div>
+            </div>
+
+            <div class="hero-right" id="shorten">
+                <div class="float-card">
+                    <h3>Shorten URL</h3>
+                    <form id="shortenForm" novalidate>
+                        <div class="input-row">
+                            <input type="url" id="longUrlInput" placeholder="Paste your long URL"
+                                aria-label="Paste your long URL" required>
+                            <button type="submit" class="btn-icon" id="shortenIconBtn" aria-label="Shorten">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2.5">
+                                    <path d="M12 5v14M19 12l-7 7-7-7" />
+                                </svg>
+                            </button>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block" id="shortenSubmitBtn">Shorten
+                            URL</button>
+                    </form>
+                    <p id="shortenError"
+                        style="display:none; color:var(--error); font-size:13.5px; font-weight:600; margin-top:12px;">
+                    </p>
+                    <div class="result-box" id="resultBox">
+                        <div class="result-icon">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.5">
+                                <path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z" />
+                            </svg>
+                        </div>
+                        <div class="result-text">
+                            <a class="short" id="shortUrlText" href="#" target="_blank"
+                                rel="noopener noreferrer">urlforge.in/abc123</a>
+                            <div class="long" id="longUrlEcho">↳ from your-really-long-marketing-link.com/campaign</div>
+                        </div>
+                    </div>
+                    <div class="result-actions">
+                        <button type="button" class="btn btn-secondary" id="copyBtn">Copy Link</button>
+                        <button type="button" class="btn btn-secondary" id="qrBtn">Generate QR</button>
+                    </div>
+                    <div id="qrWrap" style="display:none; text-align:center; margin-top:16px;">
+                        <img id="qrImage" src="" alt="QR code for shortened URL"
+                            style="width:150px; height:150px; border-radius:12px; border:1px solid var(--border);">
+                    </div>
+                    <div class="trust-row">
+                        <p>Trusted by teams at</p>
+                        <div class="trust-logos">
+                            <span>Northwind</span><span>Acme</span><span>Vertex</span><span>Solace</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ FEATURES ============ -->
+    <section id="features">
+        <div class="container">
+            <div class="section-head">
+                <span class="eyebrow">What's Inside</span>
+                <h2>Everything You Need</h2>
+                <p>One platform for shortening, validating, and understanding every link you share.</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z" />
+                        </svg></div>
+                    <h3>Fast URL Shortening</h3>
+                    <p>Turn long, messy links into short, shareable ones in under a second.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="3" width="7" height="7" />
+                            <rect x="14" y="3" width="7" height="7" />
+                            <rect x="3" y="14" width="7" height="7" />
+                            <path d="M14 14h3v3h-3zM19 19h2v2h-2z" />
+                        </svg></div>
+                    <h3>QR Code Generation</h3>
+                    <p>Every short link comes with a scannable QR code, ready to print or share.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <path d="M9 12l2 2 4-4" />
+                            <circle cx="12" cy="12" r="9" />
+                        </svg></div>
+                    <h3>URL Validation</h3>
+                    <p>Check a link's safety and structure before you ever click it.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <path d="M3 3v18h18M7 15l4-5 3 3 5-7" />
+                        </svg></div>
+                    <h3>Click Analytics</h3>
+                    <p>See who's clicking, from where, and on what device — link by link.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z" />
+                        </svg></div>
+                    <h3>Secure Links</h3>
+                    <p>Every redirect runs over HTTPS with built-in malicious-link screening.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z" />
+                        </svg></div>
+                    <h3>Lightning Fast APIs</h3>
+                    <p>Redis-backed redirects and a Spring Boot core built for high throughput.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ VALIDATOR ============ -->
+    <section id="validate" class="analytics-bg">
+        <div class="container">
+            <div class="section-head">
+                <span class="eyebrow">Safety First</span>
+                <h2>Check Short Link Status</h2>
+                <p>Instantly verify whether a URLForge short URL is active and available in our database.</p>
+            </div>
+            <div class="validator-card">
+                <form id="validateForm" novalidate>
+                    <div class="input-row">
+                        <input type="text" id="validateInput" placeholder="Paste URL to validate"
+                            aria-label="Paste URL to validate">
+                    </div>
+                    <button type="submit" class="btn btn-accent btn-block">Validate URL</button>
+                </form>
+                <div class="validate-outcomes" id="validateOutcomes" style="display:none;">
+                    <div class="outcome valid" id="outcomeValid" style="display:none;">
+                        <span class="oicon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="3">
+                                <path d="M20 6L9 17l-5-5" />
+                            </svg></span>
+                        <span>Valid URL<span class="outcome-sub">Matches expected URL format</span></span>
+                    </div>
+                    <div class="outcome invalid" id="outcomeInvalid" style="display:none;">
+                        <span class="oicon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="3">
+                                <path d="M18 6L6 18M6 6l12 12" />
+                            </svg></span>
+                        <span>Invalid URL<span class="outcome-sub">Malformed — check the format</span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ ANALYTICS ============ -->
+    <section id="analytics">
+        <div class="container">
+            <div class="section-head">
+                <span class="eyebrow">Per-Link Insight</span>
+                <h2>Analytics For Your Link</h2>
+                <p>Enter a single short URL to see exactly how that link is performing.</p>
+            </div>
+
+            <div class="analytics-lookup">
+                <input type="text" id="analyticsInput" placeholder="Enter short URL — e.g. urlforge.in/abc123"
+                    aria-label="Enter short URL">
+                <button type="button" class="btn btn-primary" id="analyticsBtn">Fetch Analytics</button>
+            </div>
+            <p id="analyticsNote"
+                style="text-align:center; font-size:13px; color:var(--ink-muted); margin:-30px 0 40px;">Showing sample
+                data — the analytics endpoint isn't live on the API yet.</p>
+
+            <div class="stats-row">
+                <div class="stat-card">
+                    <div class="label">Total Clicks</div>
+                    <div class="value">4,812</div>
+                </div>
+                <div class="stat-card">
+                    <div class="label">Unique Visitors</div>
+                    <div class="value">3,204</div>
+                </div>
+                <div class="stat-card">
+                    <div class="label">Created On</div>
+                    <div class="value" style="font-size:16px;">Jun 12, 2026</div>
+                </div>
+                <div class="stat-card">
+                    <div class="label">Last Click</div>
+                    <div class="value" style="font-size:16px;">2 min ago</div>
+                </div>
+                <div class="stat-card">
+                    <div class="label">Expiry Date</div>
+                    <div class="value" style="font-size:16px;">Never</div>
+                </div>
+                <div class="stat-card">
+                    <div class="label">Status</div>
+                    <div class="value status-live">Active</div>
+                </div>
+            </div>
+
+            <div class="analytics-grid">
+                <div class="panel">
+                    <h4>Top Countries <span>Share</span></h4>
+                    <div class="bar-list">
+                        <div class="bar-row"><span class="bname">India</span><span class="bar-track"><span
+                                    class="bar-fill" style="width:62%"></span></span><span class="bval">62%</span></div>
+                        <div class="bar-row"><span class="bname">USA</span><span class="bar-track"><span
+                                    class="bar-fill" style="width:21%"></span></span><span class="bval">21%</span></div>
+                        <div class="bar-row"><span class="bname">UK</span><span class="bar-track"><span class="bar-fill"
+                                    style="width:10%"></span></span><span class="bval">10%</span></div>
+                        <div class="bar-row"><span class="bname">Others</span><span class="bar-track"><span
+                                    class="bar-fill" style="width:7%"></span></span><span class="bval">7%</span></div>
+                    </div>
+                </div>
+
+                <div class="panel">
+                    <h4>Device Distribution <span>Sessions</span></h4>
+                    <div class="pie-wrap">
+                        <div class="pie" role="img" aria-label="Device distribution pie chart"></div>
+                        <ul class="pie-legend">
+                            <li><span class="sw" style="background:var(--accent);"></span>Mobile — 58%</li>
+                            <li><span class="sw" style="background:var(--ink);"></span>Desktop — 26%</li>
+                            <li><span class="sw" style="background:#D9D9D6;"></span>Tablet — 16%</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="panel">
+                    <h4>Top Browsers <span>Share</span></h4>
+                    <div class="bar-list">
+                        <div class="bar-row"><span class="bname">Chrome</span><span class="bar-track"><span
+                                    class="bar-fill" style="width:71%"></span></span><span class="bval">71%</span></div>
+                        <div class="bar-row"><span class="bname">Safari</span><span class="bar-track"><span
+                                    class="bar-fill" style="width:17%"></span></span><span class="bval">17%</span></div>
+                        <div class="bar-row"><span class="bname">Firefox</span><span class="bar-track"><span
+                                    class="bar-fill" style="width:8%"></span></span><span class="bval">8%</span></div>
+                        <div class="bar-row"><span class="bname">Edge</span><span class="bar-track"><span
+                                    class="bar-fill" style="width:4%"></span></span><span class="bval">4%</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="analytics-grid" style="grid-template-columns:1fr;">
+                <div class="panel">
+                    <h4>Traffic Sources <span>Referrers</span></h4>
+                    <div class="traffic-list" style="display:grid; grid-template-columns:repeat(4,1fr); gap:20px;">
+                        <div class="traffic-row"><span class="tname">Direct</span><span class="tval">44%</span></div>
+                        <div class="traffic-row"><span class="tname">Twitter / X</span><span class="tval">27%</span>
+                        </div>
+                        <div class="traffic-row"><span class="tname">WhatsApp</span><span class="tval">18%</span></div>
+                        <div class="traffic-row"><span class="tname">Email</span><span class="tval">11%</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="table-panel">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Time</th>
+                            <th>Country</th>
+                            <th>Device</th>
+                            <th>Browser</th>
+                            <th>Referrer</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>10:42 AM</td>
+                            <td>India</td>
+                            <td><span class="tag">Mobile</span></td>
+                            <td>Chrome</td>
+                            <td>Direct</td>
+                        </tr>
+                        <tr>
+                            <td>10:38 AM</td>
+                            <td>USA</td>
+                            <td><span class="tag">Desktop</span></td>
+                            <td>Safari</td>
+                            <td>Twitter / X</td>
+                        </tr>
+                        <tr>
+                            <td>10:31 AM</td>
+                            <td>India</td>
+                            <td><span class="tag">Mobile</span></td>
+                            <td>Chrome</td>
+                            <td>WhatsApp</td>
+                        </tr>
+                        <tr>
+                            <td>10:20 AM</td>
+                            <td>UK</td>
+                            <td><span class="tag">Tablet</span></td>
+                            <td>Firefox</td>
+                            <td>Email</td>
+                        </tr>
+                        <tr>
+                            <td>10:12 AM</td>
+                            <td>India</td>
+                            <td><span class="tag">Desktop</span></td>
+                            <td>Edge</td>
+                            <td>Direct</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="chart-panel">
+                <h4 style="margin-bottom:24px;">Clicks Over Time <span
+                        style="font-size:11px;color:var(--ink-muted);text-transform:uppercase;">Last 7 days</span></h4>
+                <svg viewBox="0 0 700 220" preserveAspectRatio="none">
+                    <line x1="0" y1="50" x2="700" y2="50" stroke="#ECECEC" stroke-width="1" />
+                    <line x1="0" y1="110" x2="700" y2="110" stroke="#ECECEC" stroke-width="1" />
+                    <line x1="0" y1="170" x2="700" y2="170" stroke="#ECECEC" stroke-width="1" />
+                    <polyline points="0,160 100,140 200,150 300,100 400,120 500,60 600,80 700,40" fill="none"
+                        stroke="#E8734A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+                    <polygon points="0,160 100,140 200,150 300,100 400,120 500,60 600,80 700,40 700,220 0,220"
+                        fill="#E8734A" opacity="0.08" />
+                    <circle cx="700" cy="40" r="5" fill="#E8734A" />
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ FAQ ============ -->
+    <section id="faq" class="analytics-bg">
+        <div class="container">
+            <div class="section-head">
+                <span class="eyebrow">Questions</span>
+                <h2>Frequently Asked Questions</h2>
+            </div>
+            <div class="faq-list">
+
+                <div class="faq-item">
+                    <input type="checkbox" id="faq1">
+                    <label for="faq1">What is URLForge?</label>
+                    <div class="faq-answer">
+                        <p>URLForge is an all-in-one link platform for shortening URLs, validating them before you
+                            click, generating QR codes, and tracking how each link performs.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <input type="checkbox" id="faq2">
+                    <label for="faq2">How does URL shortening work?</label>
+                    <div class="faq-answer">
+                        <p>Paste any long link and URLForge generates a short, unique code mapped to it. Visiting the
+                            short link redirects instantly to the original destination.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <input type="checkbox" id="faq3">
+                    <label for="faq3">How does URL validation work?</label>
+                    <div class="faq-answer">
+                        <p>URLForge checks that a link is properly formatted and reachable, and screens it against known
+                            unsafe destinations before you open it.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <input type="checkbox" id="faq4">
+                    <label for="faq4">How are analytics generated?</label>
+                    <div class="faq-answer">
+                        <p>Every visit to a short link is logged with details like location, device, browser, and
+                            referrer, then summarized on that link's own analytics page.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <input type="checkbox" id="faq5">
+                    <label for="faq5">Can I generate QR codes?</label>
+                    <div class="faq-answer">
+                        <p>Yes. Every shortened link includes a one-click QR code you can download and use anywhere
+                            print or scanning is easier than typing.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ CTA BAND ============ -->
+    <section style="padding-top:0;">
+        <div class="container">
+            <div class="cta-band">
+                <div>
+                    <h2>Ready to simplify your links?</h2>
+                    <p>Start for free — no card required.</p>
+                </div>
+                <a href="#shorten" class="btn btn-accent">Shorten Your First URL →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ FOOTER ============ -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="logo"><span class="logo-mark">U</span>URLForge</div>
+                    <p class="footer-desc">One platform to shorten, validate, and understand every link you share.</p>
+                </div>
+                <div class="footer-col">
+                    <h5>Quick Links</h5>
+                    <ul>
+                        <li><a href="#hero">Home</a></li>
+                        <li><a href="#shorten">Shorten URL</a></li>
+                        <li><a href="#validate">Validate URL</a></li>
+                        <li><a href="#analytics">Analytics</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>Technology Used</h5>
+                    <div class="tech-pills">
+                        <span>Java</span><span>Spring
+                            Boot</span><span>PostgreSQL</span><span>Redis</span><span>Docker</span><span>GitHub</span>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>© 2026 URLForge. All rights reserved.</span>
+                <span>Built with Java · Spring Boot · PostgreSQL · Redis</span>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js" defer></script>
+</body>
+
+</html>
