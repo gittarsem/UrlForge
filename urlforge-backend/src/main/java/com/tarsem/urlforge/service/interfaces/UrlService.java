@@ -9,4 +9,6 @@ public interface UrlService {
     UrlResponse forge(UrlRequest url);
 
     String redirect(String shortCode) throws UrlNotFoundException;
+
+    boolean isValid(String shortCode);
 }

@@ -112,4 +112,16 @@ public class UrlServiceImpl implements UrlService {
 
         return urlEntity.getOriginalUrl();
     }
+
+    @Override
+    public boolean isValid(String shortCode) {
+
+        logger.info(
+                "Redirect request received for shortCode={} is {}",
+                shortCode,
+                urlRepository.findByShortCode(shortCode).isPresent()
+        );
+        return urlRepository.findByShortCode(shortCode).isPresent();
+
+    }
 }

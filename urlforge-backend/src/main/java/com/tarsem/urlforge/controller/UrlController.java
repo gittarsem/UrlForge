@@ -9,10 +9,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api")
@@ -33,5 +30,10 @@ public class UrlController {
     @PostMapping("/urls")
     private ResponseEntity<UrlResponse> urlforge(@Valid @RequestBody UrlRequest url){
         return ResponseEntity.ok(urlService.forge(url));
+    }
+
+    @GetMapping("/validate/{shortCode}")
+    public boolean isValid(@PathVariable String shortCode){
+        return urlService.isValid(shortCode);
     }
 }
