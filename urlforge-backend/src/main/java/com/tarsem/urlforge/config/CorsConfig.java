@@ -17,9 +17,10 @@ public class CorsConfig {
             public void addCorsMappings(CorsRegistry registry) {
 
                 registry.addMapping("/**")
-                        .allowedOrigins("http://localhost:5173")
-                        .allowedOrigins("http://127.0.0.1:5500")
-                        .allowedOrigins("https://url-forge-nu.vercel.app")
+                        .allowedOrigins(
+                                "http://127.0.0.1:5500",
+                                "https://url-forge-nu.vercel.app"
+                        )
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS")
                         .allowedHeaders("*")
                         .allowCredentials(true);
