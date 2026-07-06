@@ -6,7 +6,7 @@
      GET  /{shortCode}             -> redirect (used natively via <a>/location)
    ============================================================ */
 
-const API_BASE = "http://localhost:8080";
+const API_BASE = "https://urlforge-p2g3.onrender.com";
 
 /* Same pattern the backend validates against, mirrored here
    for instant client-side feedback before we ever hit the API. */
